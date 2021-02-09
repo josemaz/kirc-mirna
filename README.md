@@ -8,7 +8,7 @@ Jose Maria Zamora-Fuentes, Jesus Espinal-Enriquez, Enrique Hernandez-Lemus
 
 ## Pre-requisites
 
-<!-- Considerations:
+Considerations:
 
 - R (3.6.3)
 - Python 3
@@ -19,25 +19,25 @@ Pre-requisites to run scripts in theses paheses are obtained with:
 
 Python Pre-requisites (optional):
 
-`$ bash install-miniconda.sh` -->
+`$ bash install-miniconda.sh`
 
 
 
-<!-- ## Directory structure
+## Directory structure
 
-- */pipeline* : Files to fetch data of GDC. Make preQC, postQC and normalization
+<!-- - */pipeline* : Files to fetch data of GDC. Make preQC, postQC and normalization
 - */Results/DEG* : Output of Differential Expression of genes (DEG)
 - */Results/Expression* : Clean Expression Matrix (Genes x Samples)
 - */Results/MI* : 10000 biggest Mutual Information pairs of genes
-- */Extras* : Data, Plots and Utils for this paper.
+- */Extras* : Data, Plots and Utils for this paper. -->
 
-
+# RNA-SEQ
 
 ## 01 - Data Aquisition, Quality Control  and Normalization
 
 These three phases of the process are performed by next R script:
 
-`$ Rscript RNAseq-KIRC.R`
+`$ Rscript R/01-rnaseq.R`
 
 The expression data for control and each stage are saved on:
 
@@ -53,13 +53,15 @@ Plots for post Normalization Quality Control are saved on:
 
 
 
-## 02 - Mutual Information
+<!-- ## 02 - Mutual Information
 
 You can use repository of parallel mulitcore [ARACNe](https://github.com/CSB-IG/ARACNE-multicore)
 
 From ARACNe2 output writing out MI network cuts of 10k interactions into `Results`  directory in this repository:
 
 `$ cp kirc-ctrl-10k.tsv kirc-stagei-10k.tsv kirc-stageii-10k.tsv kirc-stageiii-10k.tsv kirc-stageiv-10k.tsv Results/MI/`
+
+YOu need
 
 
 
@@ -139,7 +141,7 @@ In Rstudio you can use
 
 We only enriched 1M networks with:
 
-python Py/community-GO.py Results/cuts-mi/1M/inter-all-groups-1M.tsv -->
+python Py/community-GO.py Results/cuts-mi/1M/inter-all-groups-1M.tsv
 
-
+ -->
 
