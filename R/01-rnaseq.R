@@ -349,7 +349,7 @@ cat("PCA scores raw plot generated.\n")
 
 ######################################################
 cat(red("6.0 Saving Data"),"\n")
-setwd(paste0(raiz,OUTDIR))
+setwd(paste0(raiz,"/",OUTDIR))
 for (i in levels(fact.etapas$tumor_stage)){
   cat("Saving grupo:",green(i),"\n")
   grupo <- ARSyn[,ARSyn$tumor_stage==i]
