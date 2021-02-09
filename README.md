@@ -15,7 +15,7 @@ Considerations:
 
 Pre-requisites to run scripts in theses paheses are obtained with:
 
-`$ Rscript pkgs-requiremnts.R`
+`$ Rscript R/pkgs-requiremnts.R`
 
 Python Pre-requisites (optional):
 
@@ -31,7 +31,7 @@ Python Pre-requisites (optional):
 - */Results/MI* : 10000 biggest Mutual Information pairs of genes
 - */Extras* : Data, Plots and Utils for this paper.
  -->
- 
+
 # RNA-SEQ
 
 ## 01 - Data Aquisition, Quality Control  and Normalization

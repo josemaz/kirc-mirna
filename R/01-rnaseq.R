@@ -15,6 +15,8 @@ packageVersion("TCGAbiolinks") # show library versions
 
 # Setting Global Variables
 EXP.NAME <- "kirc"
+OUTDIR <- "Output"
+dir.create(OUTDIR)
 WORKDIR <- "pipeline/TCGA"
 dir.create(WORKDIR, recursive = TRUE)
 setwd(WORKDIR)
@@ -24,8 +26,6 @@ PREDIR <- paste(PLOTSDIR, "QC_PRE", sep = "/")
 dir.create(PREDIR)
 POSTDIR <- paste(PLOTSDIR, "QC_POST", sep = "/")
 dir.create(POSTDIR)
-OUTDIR <- "Output"
-dir.create(OUTDIR)
 w <- 1024 #Resolucion de los plots
 h <- 1024  #Resolucion de los plots
 p <- 24   #Resolucion de los plots
