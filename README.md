@@ -25,12 +25,13 @@ Python Pre-requisites (optional):
 
 ## Directory structure
 
-<!-- - */pipeline* : Files to fetch data of GDC. Make preQC, postQC and normalization
-- */Results/DEG* : Output of Differential Expression of genes (DEG)
+- */pipeline* : Files to fetch data of GDC. Make preQC, postQC and normalization
+<!-- - */Results/DEG* : Output of Differential Expression of genes (DEG)
 - */Results/Expression* : Clean Expression Matrix (Genes x Samples)
 - */Results/MI* : 10000 biggest Mutual Information pairs of genes
-- */Extras* : Data, Plots and Utils for this paper. -->
-
+- */Extras* : Data, Plots and Utils for this paper.
+ -->
+ 
 # RNA-SEQ
 
 ## 01 - Data Aquisition, Quality Control  and Normalization
