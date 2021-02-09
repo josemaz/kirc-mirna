@@ -283,11 +283,12 @@ explo.plot(mylengthbias, samples = NULL, toplot = "global")
 dev.off()
 cat("Lenght bias plot generated\n")
 #! GC bias
-mygcbias <- NOISeq::dat(normData, factor = "tumor_stage", type="GCbias")
-png(paste(POSTDIR, "02-GCbias.png", sep="/"), width=w, height=h, pointsize=p)
-explo.plot(mygcbias, samples = NULL, toplot = "global")
-dev.off()
-cat("GC bias plot generated\n")
+#! CHECK!!!
+# mygcbias <- NOISeq::dat(normData, factor = "tumor_stage", type="GCbias")
+# png(paste(POSTDIR, "02-GCbias.png", sep="/"), width=w, height=h, pointsize=p)
+# explo.plot(mygcbias, samples = NULL, toplot = "global")
+# dev.off()
+# cat("GC bias plot generated\n")
 #! PCA
 pca.dat <- NOISeq::dat(normData, type = "PCA", logtransf = F)
 pca.results <- pca.dat@dat$result
