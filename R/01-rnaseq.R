@@ -24,7 +24,7 @@ PREDIR <- paste(PLOTSDIR, "QC_PRE", sep = "/")
 dir.create(PREDIR)
 POSTDIR <- paste(PLOTSDIR, "QC_POST", sep = "/")
 dir.create(POSTDIR)
-OUTDIR <- "Outs"
+OUTDIR <- "Output"
 dir.create(OUTDIR)
 w <- 1024 #Resolucion de los plots
 h <- 1024  #Resolucion de los plots
@@ -349,7 +349,7 @@ cat("PCA scores raw plot generated.\n")
 
 ######################################################
 cat(red("6.0 Saving Data"),"\n")
-setwd(paste0(raiz,"/Output"))
+setwd(paste0(raiz,OUTDIR))
 for (i in levels(fact.etapas$tumor_stage)){
   cat("Saving grupo:",green(i),"\n")
   grupo <- ARSyn[,ARSyn$tumor_stage==i]
