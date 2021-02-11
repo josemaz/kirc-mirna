@@ -257,6 +257,7 @@ cat(green("Genes filtered with CPM>10: ",nrow(countMatrixFiltered),"\n"))
   rownames(annotFiltered) <- annotFiltered[,1]
   fact.etapas <- data.frame(tumor_stage=designExp$tumor_stage, 
     row.names=colnames(countMatrixFiltered))
+  fact.etapas$tumor_stage <- as.factor(fact.etapas$tumor_stage)
 
 	# Full, Full, TMM
 	ln.data <- withinLaneNormalization(countMatrixFiltered, annotFiltered$lenght, which = "full")
