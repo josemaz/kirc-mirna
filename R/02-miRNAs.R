@@ -77,8 +77,8 @@ joined <- right_join(MIMATs, df,
                            by = c("precursor" = "MIMATs"))
 joined<-joined[,-2]
 joined <- drop_na(joined, mature)
-write.table(joined, file="miRNA-expr.tsv", sep='\t', 
-	quote=FALSE, row.names = FALSE)
+# write.table(joined, file="miRNA-expr.tsv", sep='\t', 
+# 	quote=FALSE, row.names = FALSE)
 rownames(joined) <- joined$mature
 joined<-joined[,-1]
 colnames(joined) <- str_replace_all(colnames(joined),"\\.","-")
@@ -128,7 +128,7 @@ print(merged[duplicated(merged$mirna),])
 
 
 #########################################################################
-cat(red("4.0 Matching with RNAseq Data"),"\n")
+cat(red("5.0 Saving Data"),"\n")
 targets <- data.frame()
 for (i in levels(merged$tipo)){
 	print(i)
