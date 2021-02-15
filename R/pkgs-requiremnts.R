@@ -48,3 +48,5 @@ devtools::install_github('BioinformaticsFMRP/TCGAbiolinks')
 
 install.packages("VennDiagram")
 install.packages("crayon")
+
+packageVersion("TCGAbiolinks")

@@ -5,7 +5,6 @@ This repository contains code and supplementary materials for paper: *miRNA and 
 Jose Maria Zamora-Fuentes, Jesus Espinal-Enriquez, Enrique Hernandez-Lemus
 
 
-
 ## Pre-requisites
 
 Considerations:
@@ -22,7 +21,6 @@ Python Pre-requisites (optional):
 `$ bash install-miniconda.sh`
 
 
-
 ## Directory structure
 
 - */pipeline* : Files to fetch data of GDC. Make preQC, postQC and normalization
@@ -32,6 +30,7 @@ Python Pre-requisites (optional):
 - */Extras* : Data, Plots and Utils for this paper.
  -->
 
+
 # RNA-SEQ
 
 ## 01 - Data Aquisition, Quality Control  and Normalization
@@ -40,17 +39,22 @@ These three phases of the process are performed by next R script:
 
 `$ Rscript R/01-rnaseq.R`
 
-The expression data for control and each stage are saved on:
+The RNA expression data for control and each stage are saved on:
 
-`$ ls pipeline/TCGA/Outs/`
+`$ ls Output/`
 
-Plots for pre Normalization Quality Control are saved on:
 
-`$ ls pipeline/TCGA/Plots/QC_PRE/`
+#  miRNA
 
-Plots for post Normalization Quality Control are saved on:
+## 01 - Data Aquisition, Quality Control  and Normalization
 
-`$ ls pipeline/TCGA/Plots/QC_POST/`
+These three phases of the process are performed by next R script:
+
+`$ Rscript R/02-miRNAs.R`
+
+The miRNA expression data for control and each stage are saved on:
+
+`$ ls Output/`
 
 
 
