@@ -46,7 +46,7 @@ The RNA expression data for control and each stage are saved on:
 
 #  miRNA
 
-## 01 - Data Aquisition, Quality Control  and Normalization
+## 02 - Data Aquisition, Quality Control  and Normalization
 
 These three phases of the process are performed by next R script:
 
@@ -54,9 +54,24 @@ These three phases of the process are performed by next R script:
 
 The miRNA expression data for control and each stage are saved on:
 
+Anotar los nombres de archivos
+
 `$ ls Output/`
 
 
+#  Processing
+
+## 03 - Annotation
+
+These three phases of the process are performed by next Python script:
+
+`$ python Py/03-clean-biomart.py`
+
+The annotation and clean expression are saved on:
+
+`$ ls Output/`
+
+Anotar los nombres de archivos
 
 <!-- ## 02 - Mutual Information
 
