@@ -73,7 +73,9 @@ The annotation and clean expression are saved on:
 
 Anotar los nombres de archivos
 
-<!-- ## 02 - Mutual Information
+
+
+## 04 - Mutual Information
 
 You can use repository of parallel mulitcore [ARACNe](https://github.com/CSB-IG/ARACNE-multicore)
 
@@ -81,10 +83,20 @@ From ARACNe2 output writing out MI network cuts of 10k interactions into `Result
 
 `$ cp kirc-ctrl-10k.tsv kirc-stagei-10k.tsv kirc-stageii-10k.tsv kirc-stageiii-10k.tsv kirc-stageiv-10k.tsv Results/MI/`
 
-YOu need
+Create complete matrix and cut gene-miRNA interactions.
 
 
 
+## 04 - Networks Analysis 
+
+### miRNA regulators
+
+`$ python Py/net-specs.py`
+
+
+
+
+<!-- 
 ## 03 - Differential Expression (DEG)
 
 Script to write out DEG in a *tsv* file:
@@ -161,7 +173,7 @@ In Rstudio you can use
 
 We only enriched 1M networks with:
 
-python Py/community-GO.py Results/cuts-mi/1M/inter-all-groups-1M.tsv
+python Py/community-GO.py Results/cuts-mi/1M/inter-all-groups-1M.tsv -->
 
- -->
+
 
