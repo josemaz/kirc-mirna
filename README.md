@@ -93,6 +93,9 @@ Create complete matrix and cut gene-miRNA interactions.
 
 `$ python Py/net-specs.py`
 
+Convention to name miRNA-gen networks in directory `Output/MI` is:
+
+`expr-all-ctrl-1e4-genmirna.tsv, expr-all-stagei-1e4-genmirna.tsv, expr-all-stageii-1e4-genmirna.tsv, expr-all-stageiii-1e4-genmirna.tsv, expr-all-stageiv-1e4-genmirna.tsv`
 
 
 
