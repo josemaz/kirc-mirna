@@ -1,7 +1,7 @@
 import networkx as nx
 import pandas as pd
 from venn import venn
-
+import matplotlib.pyplot as plt
 
 data = {
     'ctrl' : None, 
@@ -30,3 +30,11 @@ for key in in_degrees:
 df = pd.DataFrame.from_dict(in_degrees_vals)
 # print(df.to_latex(index=False))
 print(df)
+
+# Number of miRNAs with more regulated genes that was shared between stages
+df = {}
+for key in in_degrees:
+    df[key] = { x[0] for x in in_degrees[key] }
+# df1 = pd.DataFrame.from_dict(df1)
+venn(df)
+plt.show()
