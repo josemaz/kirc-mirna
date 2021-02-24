@@ -11,12 +11,12 @@ data = {
     'stageiv': None
 }
 
-
+#! Reading data
 for key in data:
     fname = 'Output/MI/expr-all-' + key + '-1e4-genmirna.tsv'
     data[key] = pd.read_csv(fname, sep='\t')
-
-
+ 
+#! Top 10 of miRNAs with more regultated genes
 redes = dict.fromkeys(data)
 in_degrees = dict.fromkeys(data)
 for key in redes:
@@ -30,8 +30,13 @@ for key in in_degrees:
 df = pd.DataFrame.from_dict(in_degrees_vals)
 # print(df.to_latex(index=False))
 print(df)
+miRNAs = {}
+for key in in_degrees:
+    miRNAs[key] = [ x[0] for x in in_degrees[key] ]
+df = pd.DataFrame.from_dict(miRNAs)
+print(df)
 
-# Number of miRNAs with more regulated genes that was shared between stages
+#! Number of miRNAs with more regulated genes that was shared between stages
 df = {}
 for key in in_degrees:
     df[key] = { x[0] for x in in_degrees[key] }
