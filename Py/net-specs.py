@@ -13,7 +13,7 @@ data = {
 
 #! Reading data
 for key in data:
-    fname = 'Output/MI/expr-all-' + key + '-1e4-genmirna.tsv'
+    fname = 'Output/MI/expr-all-' + key + '-1e5-genmirna.tsv'
     data[key] = pd.read_csv(fname, sep='\t')
  
 #! Top 10 of miRNAs with more regultated genes
