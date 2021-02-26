@@ -99,8 +99,13 @@ Convention to input name miRNA-gen networks in directory `Output/MI` is:
 
 
 
-<!-- 
-## 03 - Differential Expression (DEG)
+## 05 - Differential Expression (DEG)
+
+### miRNAs
+
+To extract only miRNAs expression of files, you can use:
+
+`$ for i in expr-all-*.tsv; do t=$(echo $i | cut -d\- -f 3 | cut -d\. -f 1); head -1  ${i} > expr-miRNA-${t}.tsv; tail -n 494 ${i} >> expr-miRNA-${t}.tsv  ; done`
 
 Script to write out DEG in a *tsv* file:
 
@@ -112,6 +117,19 @@ Output for each stage is saved on:
 
 This output contains volcano plot in html format.
 
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
 
 
 ## 04 - Networks Analysis by MI cut off interaction
