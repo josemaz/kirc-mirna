@@ -13,7 +13,7 @@ for t in tipos:
 	annot = pd.read_csv(fin, sep = "\t")
 	print(df.shape,annot.shape)
 	df = pd.merge(df, annot, on="gene", how="inner")
-	df.Chrom.replace(['X', 'Y'], [22, 23], inplace=True)
+	df.Chrom.replace(['X', 'Y'], [23, 24], inplace=True)
 	df.Chrom = df.Chrom.apply(pd.to_numeric)
 	df = df.sort_values(["Chrom", "gStart"], ascending = True)
 	# print(df)

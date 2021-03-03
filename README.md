@@ -120,9 +120,9 @@ This output contains volcano plot in html format.
 
 ## 07 - Pearson analysis
 
-To get heatmap plots for pearson crrelations
+To get heatmap plots for pearson correlations
 
-`$  python Py/pearson.py`
+`$ python Py/pearson.py`
 
 This output contains volcano plot in html format.
 
