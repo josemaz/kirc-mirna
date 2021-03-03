@@ -118,7 +118,13 @@ Output for each stage is saved on:
 This output contains volcano plot in html format.
 
 
+## 07 - Pearson analysis
 
+To get heatmap plots for pearson crrelations
+
+`$  python Py/pearson.py`
+
+This output contains volcano plot in html format.
 
 
 
