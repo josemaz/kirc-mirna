@@ -99,17 +99,17 @@ Convention to input name miRNA-gen networks in directory `Output/MI` is:
 
 
 
-## 05 - Differential Expression (DEG)
+## 06 - Differential Expression (DEG)
 
 ### miRNAs
 
-To extract only miRNAs expression of files, you can use:
+To extract only miRNAs expression of files, you can use in Output directory:
 
 `$ for i in expr-all-*.tsv; do t=$(echo $i | cut -d\- -f 3 | cut -d\. -f 1); head -1  ${i} > expr-miRNA-${t}.tsv; tail -n 494 ${i} >> expr-miRNA-${t}.tsv  ; done`
 
 Script to write out DEG in a *tsv* file:
 
-`$ Rscript DEG.R`
+`$ Rscript R/DEG.R`
 
 Output for each stage is saved on:
 
