@@ -3,7 +3,6 @@ import utils
 from re import match
 
 tipos = ["ctrl","stagei","stageii","stageiii","stageiv"]
-# tipos = ["ctrl","stagei"]
 
 # Stage plot itration
 for t in tipos:
@@ -30,12 +29,5 @@ for t in tipos:
 		index = False, header=True, sep='\t')
 
 	utils.logprint(f'Type {t} Finished.')
-
-
-
-	# fin = "Output/annot-all-" + t + ".tsv"
-	# annot = pd.read_csv(fin, sep = "\t")
-	# print(df.shape,annot.shape)
-	# df = pd.merge(df, annot, on="gene", how="inner")
 
 
