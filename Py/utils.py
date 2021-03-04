@@ -5,6 +5,7 @@ from pathlib import Path
 from termcolor import colored, cprint
 
 logprint = lambda x: cprint(x, 'red', attrs=["bold"])
+warprint = lambda x: cprint(x, 'green', attrs=["bold"])
 
 def plotcor(datos, lab, odir):
 

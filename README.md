@@ -120,16 +120,17 @@ This output contains volcano plot in html format.
 
 ## 07 - Pearson analysis
 
-To get heatmap plots for pearson correlations
+To get heatmap plots for Pearson correlations
 
 `$ python Py/pearson.py`
 
-This output contains volcano plot in html format.
+The ouput is saved on `Output/Plots`
 
+To get Pearson value networks
 
+`$ python Py/peavals.py`
 
-
-
+The ouput is saved on `Output/peaval-ctrl.tsv`, i.e.
 
 
 
