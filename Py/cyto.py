@@ -24,10 +24,26 @@ for t in tipos:
 	else:
 		utils.warprint(f'Error opening: {fin}')
 		sys.exit(15)
+	fin = 'Output/Pearson/peaval-' + t + '-100K.sif'
+	if os.path.exists(fin):
+		utils.logprint(f'Opening: {fin}')
+		net = cy.network.create_from(fin, collection="Pearson 100K")
+		nets.append(net)
+	else:
+		utils.warprint(f'Error opening: {fin}')
+		sys.exit(15)
 	fin = 'Output/MI/expr-all-' + t + '-genmirna-10K.sif'
 	if os.path.exists(fin):
 		utils.logprint(f'Opening: {fin}')
 		net = cy.network.create_from(fin, collection="MI 10K")
+		nets.append(net)
+	else:
+		utils.warprint(f'Error opening: {fin}')
+		sys.exit(15)
+	fin = 'Output/MI/expr-all-' + t + '-genmirna-100K.sif'
+	if os.path.exists(fin):
+		utils.logprint(f'Opening: {fin}')
+		net = cy.network.create_from(fin, collection="MI 100K")
 		nets.append(net)
 	else:
 		utils.warprint(f'Error opening: {fin}')
