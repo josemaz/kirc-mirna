@@ -43,14 +43,14 @@ for net in nets:
 # get the node table
 node_table = nets[0].get_node_table()
 colors = [ ','.join(map(str, np.random.randint(256, size=3))) for i in node_table.Chrom.unique()]
-mapping = dict(zip(node_table.chromname.unique(),colors))
+mapping = dict(zip(node_table.Chrom.unique(),colors))
 #mapping = {
 #            '1': '202,75,78',
 #            '2': '0,75,78'
 #        }
 print("Styling networks ...")
 my_style = cy.style.create('GAL Style')
-my_style.create_discrete_mapping(column='chromname', vp='NODE_FILL_COLOR', col_type='String', mappings=mapping )
+my_style.create_discrete_mapping(column='Chrom', vp='NODE_FILL_COLOR', col_type='String', mappings=mapping )
 for net in nets:
     cy.style.apply(my_style, net)
 
