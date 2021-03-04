@@ -1,8 +1,12 @@
 import pandas as pd
 import utils
 from re import match
+from pathlib import Path
 
 tipos = ["ctrl","stagei","stageii","stageiii","stageiv"]
+
+odir = "Output/Pearson"
+Path(odir).mkdir(parents=True, exist_ok=True)
 
 # Stage plot itration
 for t in tipos:
@@ -15,8 +19,6 @@ for t in tipos:
 	ngenes = len(genes)
 	df.set_index('gene', inplace=True)
 
-	
-
 	data = df.iloc[:,1:].T.corr()
 
 	mirna_gen = data.iloc[ngenes:,:ngenes]
@@ -25,7 +27,7 @@ for t in tipos:
 	mirna_gen.columns = ['Source','Target','P']
 	mirna_gen = mirna_gen.sort_values('P', ascending=False)
 
-	mirna_gen.to_csv('Output/peaval-' + t + '.tsv', 
+	mirna_gen.to_csv(odir + '/peaval-' + t + '.tsv', 
 		index = False, header=True, sep='\t')
 
 	utils.logprint(f'Type {t} Finished.')

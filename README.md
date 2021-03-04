@@ -124,7 +124,7 @@ To get heatmap plots for Pearson correlations:
 
 `$ python Py/pearson.py`
 
-The ouput is saved on `Output/Plots`
+The ouput is saved on `Output/Pearson/peaval-ctrl.tsv`, i.e.
 
 To get Pearson value networks:
 
