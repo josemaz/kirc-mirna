@@ -13,6 +13,9 @@ cy = CyRestClient(ip='127.0.0.1', port=1234)
 # Cleanup: Delete all existing networks and tables in current Cytoscape session
 cy.session.delete()
 
+td = pd.read_csv('Output/annot-all-ctrl.tsv', sep='\t')
+td['geneupper'] = td['gene'].str.upper()
+
 tipos = ["ctrl","stagei","stageii","stageiii","stageiv"]
 nets = []
 for t in tipos:
@@ -20,14 +23,7 @@ for t in tipos:
 	if os.path.exists(fin):
 		utils.logprint(f'Opening: {fin}')
 		net = cy.network.create_from(fin, collection="Pearson 10K")
-		nets.append(net)
-	else:
-		utils.warprint(f'Error opening: {fin}')
-		sys.exit(15)
-	fin = 'Output/Pearson/peaval-' + t + '-100K.sif'
-	if os.path.exists(fin):
-		utils.logprint(f'Opening: {fin}')
-		net = cy.network.create_from(fin, collection="Pearson 100K")
+		net.update_node_table(df=td, data_key_col='gene')
 		nets.append(net)
 	else:
 		utils.warprint(f'Error opening: {fin}')
@@ -36,25 +32,19 @@ for t in tipos:
 	if os.path.exists(fin):
 		utils.logprint(f'Opening: {fin}')
 		net = cy.network.create_from(fin, collection="MI 10K")
+		net.update_node_table(df=td, data_key_col='geneupper')
 		nets.append(net)
 	else:
 		utils.warprint(f'Error opening: {fin}')
-		sys.exit(15)
-	fin = 'Output/MI/expr-all-' + t + '-genmirna-100K.sif'
-	if os.path.exists(fin):
-		utils.logprint(f'Opening: {fin}')
-		net = cy.network.create_from(fin, collection="MI 100K")
-		nets.append(net)
-	else:
-		utils.warprint(f'Error opening: {fin}')
-		sys.exit(15)
+		sys.exit(15)	
 	
 
 
-td = pd.read_csv('Output/annot-all-ctrl.tsv', sep='\t')
-print(td)
-for net in nets:
-    net.update_node_table(df=td, data_key_col='gene')
+# print("Waiting for annotation ...")
+# td = pd.read_csv('Output/annot-all-ctrl.tsv', sep='\t')
+# print(td)
+# for net in nets:
+#     net.update_node_table(df=td, data_key_col='gene')
 
 # get the node table
 node_table = nets[0].get_node_table()
