@@ -13,8 +13,9 @@ data = {
 
 #! Reading data
 for key in data:
-    fname = 'Output/MI/expr-all-' + key + '-1e5-genmirna.tsv'
+    fname = 'Output/MI/expr-all-' + key + '-genmirna-10K.sif'
     data[key] = pd.read_csv(fname, sep='\t')
+    data[key].columns = ['Source', 'MI', 'Target']
  
 #! Top 10 of miRNAs with more regultated genes
 redes = dict.fromkeys(data)
