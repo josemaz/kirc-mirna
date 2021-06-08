@@ -1,8 +1,10 @@
 import pandas as pd
-import utils
+import utils, sys
+import numpy as np
 
 tipos = ["ctrl","stagei","stageii","stageiii","stageiv"]
 # tipos = ["ctrl","stagei"]
+odir = "Output/49-Plots/"
 
 # Stage plot itration
 for t in tipos:
@@ -16,12 +18,13 @@ for t in tipos:
 	df.Chrom.replace(['X', 'Y'], [23, 24], inplace=True)
 	df.Chrom = df.Chrom.apply(pd.to_numeric)
 	df = df.sort_values(["Chrom", "gStart"], ascending = True)
-	# print(df)
+	# print(df.gStart.head(20))
+	hlines = np.cumsum(df.groupby('Chrom').size().values)
 
 	ncols = df.shape[1]-10
-	cor = df.iloc[:,1:ncols].T.corr()
-
-	utils.plotcor(cor, "all_" + t, "Output/Plots/")
+	utils.logprint("All genome correlation")
+	cor = df.iloc[:,1:ncols].T.corr()	
+	utils.plotcor(cor, "all_" + t, odir, hlines)
 
 	# Chromosome plot itration
 	df.Chrom= df.Chrom.astype(str)
@@ -30,5 +33,5 @@ for t in tipos:
 		d = df_chr.sort_values('gStart')
 		cor = d.iloc[:,1:ncols].T.corr()
 		print("Ploting chr: ", gr_name)
-		od = "Output/Plots/" + t 
+		od = odir + t 
 		utils.plotcor(cor, "chr-" + str(gr_name), od)
