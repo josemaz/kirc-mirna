@@ -1,3 +1,8 @@
+# ch3m
+output
+pipeline
+remote
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -128,11 +133,3 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# ch3m
-sftp-config.json
-notas.md
-Drafts
-Nets
-Output
-transfer
-Results
