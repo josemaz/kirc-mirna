@@ -88,19 +88,21 @@ clean.rna <- function(RNA.exp,dat.bm){
   print(dim(RNA.exp))
   lstg <- c("Primary solid Tumor","Solid Tissue Normal")
   rnaseq <- RNA.exp[,RNA.exp$definition %in% lstg]
-  lstg <- c("Control","stage i","stage ii","stage iii","stage iv")
+  # lstg <- c("Control","stage i","stage ii","stage iii","stage iv")
   # TODO: Rename "stage i" -> stage1, etc.
-  rnaseq <- rnaseq[,rnaseq$tumor_stage %in% lstg]
+  # rnaseq <- rnaseq[,rnaseq$tumor_stage %in% lstg]
+  lstg <- c("Stage I","Stage II","Stage III","Stage IV")
+  rnaseq <- rnaseq[,rnaseq$ajcc_pathologic_stage %in% lstg]
   print(dim(rnaseq))
   
   #!-- Mutate and Changes
   clinic <- colData(rnaseq)
-  rnaseq$grupo <- rnaseq$tumor_stage
+  rnaseq$grupo <- rnaseq$ajcc_pathologic_stage
   rnaseq$grupo[clinic$sample_type_id=="11"] <- "ctrl"
-  rnaseq$grupo[rnaseq$grupo=="stage i"] <- "stage1"
-  rnaseq$grupo[rnaseq$grupo=="stage ii"] <- "stage2"
-  rnaseq$grupo[rnaseq$grupo=="stage iii"] <- "stage3"
-  rnaseq$grupo[rnaseq$grupo=="stage iv"] <- "stage4"
+  rnaseq$grupo[rnaseq$grupo=="Stage I"] <- "stage1"
+  rnaseq$grupo[rnaseq$grupo=="Stage II"] <- "stage2"
+  rnaseq$grupo[rnaseq$grupo=="Stage III"] <- "stage3"
+  rnaseq$grupo[rnaseq$grupo=="Stage IV"] <- "stage4"
   rnaseq$grupo <- as.factor(rnaseq$grupo)
   
   
