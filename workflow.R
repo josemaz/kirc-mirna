@@ -13,6 +13,7 @@ rnaseq <- rnaseq[,rnaseq$sample %in% common.pats]
 mirna <- mirna[,match(rnaseq$sample, mirna$sample)]
 colData(mirna) <- colData(rnaseq)
 
+# Normalization
 norm.rna(rnaseq)
 norm.mir(mirna)
 
