@@ -36,4 +36,4 @@ dtmp <- rename(dtmp, gene_name = external_gene_name)
 dtmp <- dtmp  %>% drop_na(gene_name)
 dtmp <- dtmp[dtmp$gene_name != "", ]
 # 21196 lines in biomart-20210517.csv
-write.csv(dtmp, file = "pipeline/biomart.csv", row.names = FALSE)
+write.csv(dtmp, file = "data/tables/biomart.csv", row.names = FALSE)

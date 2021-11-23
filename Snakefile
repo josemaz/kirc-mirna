@@ -1,19 +1,29 @@
 rule all:
     input:
-        "pipeline/rnaseq-clean.rds",
-        "pipeline/mirna-clean.rds"
+        "data/RDS/rnaseq-norm.rds",
+        "data/RDS/mirna-norm.rds"
 
 rule biomart:      
     output:
-        "pipeline/biomart.csv"
+        "data/tables/biomart.csv"
     shell:
         "Rscript R/biomart.R"
 
 rule clean:
     input:
-        "pipeline/biomart.csv"
+        "data/tables/biomart.csv"
     output:
-        "pipeline/rnaseq-clean.rds",
-        "pipeline/mirna-clean.rds"
+        "data/RDS/rnaseq-clean.rds",
+        "data/RDS/mirna-clean.rds"
     shell:
         "Rscript R/01-clean-merge.R"
+
+rule norm:
+    input:
+        "data/RDS/rnaseq-clean.rds",
+        "data/RDS/mirna-clean.rds"
+    output:
+        "data/RDS/rnaseq-norm.rds",
+        "data/RDS/mirna-norm.rds"
+    shell:
+        "Rscript R/02-norm.R"
