@@ -1,6 +1,7 @@
 rule all:
     input:
         "pipeline/rnaseq-clean.rds"
+        "pipeline/mirna-clean.rds"
 
 rule biomart:      
     output:
