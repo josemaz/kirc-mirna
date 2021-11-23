@@ -44,8 +44,7 @@ volcanos(deg.mir.an, prefix = "mir", lfc=0.5, pv=pval, c="mirbase_id")
 
 
 
-
-   #! Paste & save Result tables of RNA & miRNA
+#! Paste & save Result tables of RNA & miRNA
 for (r.name in names(res.rna)){
   print(r.name)
   r.all <- rbind(res.rna[[r.name]],res.mir[[r.name]])
