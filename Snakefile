@@ -1,13 +1,13 @@
 rule all:
     input:
-        "pipeline/rnaseq-clean.rds"
+        "pipeline/rnaseq-clean.rds",
         "pipeline/mirna-clean.rds"
 
 rule biomart:      
     output:
         "pipeline/biomart.csv"
     shell:
-        "Rscript biomart.R"
+        "Rscript R/biomart.R"
 
 rule clean:
     input:
