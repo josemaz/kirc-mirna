@@ -2,6 +2,7 @@ rule all:
     input:
         "data/RDS/rnaseq-norm.rds",
         "data/RDS/mirna-norm.rds"
+        "data/tables/exp/ctrl-all.tsv"
 
 rule biomart:      
     output:
