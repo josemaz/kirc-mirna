@@ -34,4 +34,4 @@ rule save_exp:
     output:
         "data/tables/exp/ctrl-all.tsv"
     shell:
-        "Rscript R/02-norm.R"
+        "Rscript R/03-save-exp.R"
