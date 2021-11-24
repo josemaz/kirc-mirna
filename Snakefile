@@ -25,5 +25,6 @@ rule norm:
     output:
         "data/RDS/rnaseq-norm.rds",
         "data/RDS/mirna-norm.rds"
+        "data/tables/exp/ctrl-all.tsv"
     shell:
         "Rscript R/02-norm.R"
