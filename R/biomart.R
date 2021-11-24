@@ -2,7 +2,7 @@ require(biomaRt)
 require(dplyr)
 require(tidyverse)
 
-dir.create("pipeline")
+dir.create("data/tables", recursive = TRUE)
 
 # mart=useMart(biomart="ensembl", dataset="hsapiens_gene_ensembl")
 # datasets = listDatasets(mart)

@@ -139,8 +139,8 @@ clean.rna <- function(RNA.exp,dat.bm){
 
 ###################################################################3
 # Normalization and Bias correct of RNAseq
-norm.rna <- function(dat.rna){
-  pca.grupo(dat.rna,fout = "pipeline/PCA-rna-BeforeNorm.png")
+norm.rna <- function(dat.rna, dout){
+  pca.grupo(dat.rna,fout = paste0(dout,"/PCA-rna-BeforeNorm.png"))
   fac <- data.frame(tumor_stage=dat.rna$grupo, 
                     row.names=colnames(dat.rna))
   #! Pre Normalization
@@ -154,14 +154,14 @@ norm.rna <- function(dat.rna){
   mydata2corr1 = NOISeq::ARSyNseq(noiseqData, norm = "n",  logtransf = FALSE)
   #! Post Normalization
   assay(dat.rna) <- exprs(mydata2corr1)
-  pca.grupo(dat.rna,fout = "pipeline/PCA-rna-AfterNorm.png")
+  pca.grupo(dat.rna,fout = paste0(dout,"/PCA-rna-AfterNorm.png"))
   return(dat.rna)
 }
 
 ###################################################################3
 #!- Normalization and Bias correct of miRNA
-norm.mir <- function(dat.mir){
-  pca.grupo(dat.mir,fout = "pipeline/PCA-mir-BeforeNorm.png")
+norm.mir <- function(dat.mir, dout){
+  pca.grupo(dat.mir,fout = paste0(dout,"/PCA-mir-BeforeNorm.png"))
   fac <- data.frame(tumor_stage=dat.mir$grupo, 
                     row.names=colnames(dat.mir))
   #! Pre Normalization
@@ -169,15 +169,15 @@ norm.mir <- function(dat.mir){
   mydata2corr1 = NOISeq::ARSyNseq(noiseqData, norm = "n",  logtransf = FALSE)
   #! Post Normalization
   assay(dat.mir) <- exprs(mydata2corr1)
-  pca.grupo(dat.mir,fout = "pipeline/PCA-mir-AfterNorm.png")
+  pca.grupo(dat.mir,fout = paste0(dout,"/PCA-mir-AfterNorm.png"))
   return(dat.mir)
 }
 
 ###################################################################3
 #!- Download paired
 download.paired <- function(loading = F){
-  dir.create("pipeline")
-  setwd("pipeline")
+  dir.create("data/TCGA")
+  setwd("data/TCGA")
   # Si no existen los dos objetos tambien los descarga
   fs <- !file.exists("RNAseq-tcga.rda") & !file.exists("miRNAs-tcga.rda")
   if(!loading | fs){
@@ -216,7 +216,7 @@ download.paired <- function(loading = F){
     load(file="miRNAs-tcga.rda")
     load(file="RNAseq-tcga.rda")
   }
-  setwd("..")
+  setwd("../..")
   l <- list(mirs,rnas)
   names(l) <- c("mir", "rna")
   return(l)
