@@ -28,7 +28,7 @@ for (i in levels(rnaseq$grupo)){
     write.table(mir, file=paste0(dout,"/",i,"-mirna.tsv"), 
         quote = FALSE, sep = "\t", row.names = FALSE)
     all <- rbind(rna, mir)
-    write.table(mir, file=paste0(dout,"/",i,"-all.tsv"), 
+    write.table(all, file=paste0(dout,"/",i,"-all.tsv"), 
         quote = FALSE, sep = "\t", row.names = FALSE)
 }
 #! SAVE ANNOTATION
