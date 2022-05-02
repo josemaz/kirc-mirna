@@ -182,12 +182,13 @@ download.paired <- function(loading = F){
   #fs <- !file.exists("RNAseq-tcga.rda") & !file.exists("miRNAs-tcga.rda")
   if(loading){
     #! 616 cases
-    query.mir <- GDCquery(project = "TCGA-KIRC",
+	projname <- "TCGA-KIRC"
+    query.mir <- GDCquery(project = projname,
                       data.category = "Transcriptome Profiling",
                       data.type = "miRNA Expression Quantification",
                       workflow.type = "BCGSC miRNA Profiling")
     #! 611 cases
-    query.rna <- GDCquery(project = "TCGA-KIRC",
+    query.rna <- GDCquery(project = projname,
                       data.category = "Transcriptome Profiling",
                       data.type = "Gene Expression Quantification",
                       workflow.type = "HTSeq - Counts")
@@ -195,14 +196,14 @@ download.paired <- function(loading = F){
     common.patients <- intersect(substr(getResults(query.mir, cols = "cases"), 1, 12),
                                  substr(getResults(query.rna, cols = "cases"), 1, 12))
     #! download
-    query <- GDCquery(project = "TCGA-KIRC",
+    query <- GDCquery(project = projname,
                       data.category = "Transcriptome Profiling",
                       data.type = "miRNA Expression Quantification",
                       workflow.type = "BCGSC miRNA Profiling",
                       barcode = common.patients)
     GDCdownload(query)
     mirs <- GDCprepare(query, summarizedExperiment = F)
-    query <- GDCquery(project = "TCGA-KIRC",
+    query <- GDCquery(project = projname,
                       data.category = "Transcriptome Profiling",
                       data.type = "Gene Expression Quantification",
                       workflow.type = "HTSeq - Counts",
