@@ -133,3 +133,8 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+#ch3m
+data/RDS/
+data/plots/
+data/tables/
+.snakemake/

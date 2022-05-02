@@ -179,8 +179,8 @@ download.paired <- function(loading = F){
   dir.create("data/TCGA")
   setwd("data/TCGA")
   # Si no existen los dos objetos tambien los descarga
-  fs <- !file.exists("RNAseq-tcga.rda") & !file.exists("miRNAs-tcga.rda")
-  if(!loading | fs){
+  #fs <- !file.exists("RNAseq-tcga.rda") & !file.exists("miRNAs-tcga.rda")
+  if(loading){
     #! 616 cases
     query.mir <- GDCquery(project = "TCGA-KIRC",
                       data.category = "Transcriptome Profiling",

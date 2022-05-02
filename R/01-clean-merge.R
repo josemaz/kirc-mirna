@@ -1,6 +1,6 @@
 source("R/tools.R")
 
-datos <- download.paired(loading=TRUE)
+datos <- download.paired(loading=F)
 
 bm <- read.csv("data/tables/biomart.csv")
 
