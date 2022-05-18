@@ -331,6 +331,7 @@ volcanos <- function(lres, prefix="rna", lfc=1.0, pv=1e-3, c=NULL){
 ####################################################################3
 #! Venn
 venn.degs <- function(l=NULL, sets= NULL, prefix = NULL  ){
+	dir.create("output/venns", recursive = T)
   stopifnot( (!is.null(l)) & (!is.null(prefix)) )
   print("Writing up-regultaed")
   venn.diag(l$ups[sets],paste0(prefix,"-ups"))
@@ -342,7 +343,7 @@ venn.degs <- function(l=NULL, sets= NULL, prefix = NULL  ){
 venn.diag <- function(lsets,pfx){
   colors <- c("#6b7fff", "#c3db0f", "#7FC97F", "#BEAED4", "#FDC086")
   colors <- colors[1:length(lsets)]
-  fpng <- paste0("output/venn-",pfx,".png")
+  fpng <- paste0("output/venns/venn-",pfx,".png")
   print(fpng)
   venn.diagram(x = lsets,
                # category.names = names(s),
