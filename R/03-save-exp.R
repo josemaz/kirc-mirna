@@ -2,7 +2,6 @@
 rnaseq <- readRDS("data/RDS/rnaseq-norm.rds")
 mirna <- readRDS("data/RDS/mirna-norm.rds")
 
-
 #! SAVE EXPRESSION TABLES
 dout <- "data/tables/exp"
 dir.create(dout, recursive=TRUE)
@@ -29,5 +28,6 @@ all.noms <- rbind(rowData(rnaseq)[cols],rowData(mirna)[cols])
 write.table(all.noms, file=paste0(dout,"/annot-all.tsv"), 
         quote = FALSE, sep = "\t", row.names = TRUE)
 #! SAVE CLINICAL DATA
-write.table(colData(rnaseq), file=paste0(dout,"/clinical.tsv"), 
+dt <- apply(as.data.frame(colData(rnaseq)),2,as.character) # to flatten dataframe
+write.table(dt, file=paste0(dout,"/clinical.tsv"), 
         quote = FALSE, sep = "\t", row.names = TRUE)
