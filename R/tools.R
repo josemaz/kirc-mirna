@@ -252,12 +252,12 @@ degs <- function(dats, form = ~ grupo){
 ####################################################################3
 #!- anota y escirbe lista de resultados de una lista de DEGs
 deg.annot.write <- function(ldeg, bm, prefix, c){
-  dir.create("output/DEGS", recursive = T)
+  dir.create("data/tables/DEGS", recursive = T)
   nres <- list()
   for (r.name in names(ldeg)){
     x1 <- unlist(strsplit(r.name,"_"))[1]
     x2 <- unlist(strsplit(r.name,"_"))[2]
-    fout = paste0("output/DEGS/res-",prefix,"-",x1,"_",x2,".tsv")
+    fout = paste0("data/tables/DEGS/res-",prefix,"-",x1,"_",x2,".tsv")
     print(fout)
     d1 <- as.data.frame(ldeg[[r.name]])
     d2 <- bm[!duplicated(bm[,c]),]
@@ -280,7 +280,7 @@ paste.degs <- function(ldeg1, ldeg2, prefix){
     x1 <- unlist(strsplit(i,"_"))[1]
     x2 <- unlist(strsplit(i,"_"))[2]
     l.all[[i]] <- ldeg1[[i]] <- rbind(ldeg1[[i]],ldeg2[[i]])
-    fout = paste0("output/DEGS/res-",prefix,"-",x1,"_",x2,".tsv")
+    fout = paste0("data/tables/DEGS/res-",prefix,"-",x1,"_",x2,".tsv")
     print(fout)
     write.table(l.all[[i]], file = fout, quote=FALSE, sep='\t', row.names = F)
   } 
@@ -307,9 +307,9 @@ ups.downs <- function(lres, lfc = 1.0, pval = 1e-3){
 ####################################################################3
 # #!- Plot volvano plots of list of DEGs results
 volcanos <- function(lres, prefix="rna", lfc=1.0, pv=1e-3, c=NULL){
-  dir.create("output/Volcanos", recursive = T)
+  dir.create("data/plots/Volcanos", recursive = T)
   for (r in names(lres)) {
-    fout <- paste0("output/Volcanos/vol-",
+    fout <- paste0("data/plots/Volcanos/vol-",
                    prefix,"-",r,".png")
     print(fout)
     # png(fout, width=800, height=600)
@@ -331,7 +331,7 @@ volcanos <- function(lres, prefix="rna", lfc=1.0, pv=1e-3, c=NULL){
 ####################################################################3
 #! Venn
 venn.degs <- function(l=NULL, sets= NULL, prefix = NULL  ){
-	dir.create("output/venns", recursive = T)
+  dir.create("data/plots/venns", recursive = T)
   stopifnot( (!is.null(l)) & (!is.null(prefix)) )
   print("Writing up-regultaed")
   venn.diag(l$ups[sets],paste0(prefix,"-ups"))
@@ -343,7 +343,7 @@ venn.degs <- function(l=NULL, sets= NULL, prefix = NULL  ){
 venn.diag <- function(lsets,pfx){
   colors <- c("#6b7fff", "#c3db0f", "#7FC97F", "#BEAED4", "#FDC086")
   colors <- colors[1:length(lsets)]
-  fpng <- paste0("output/venns/venn-",pfx,".png")
+  fpng <- paste0("data/plots/venns/venn-",pfx,".png")
   print(fpng)
   venn.diagram(x = lsets,
                # category.names = names(s),

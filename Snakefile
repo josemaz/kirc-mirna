@@ -1,6 +1,6 @@
 rule all:
     input:
-        "output/DEGS/res-all-stage1_ctrl.tsv"
+		"data/tables/DEGS/res-all-stage1_ctrl.tsv"
 
 rule biomart:      
     output:
@@ -42,10 +42,10 @@ rule degs:
 		"data/RDS/mirna-norm.rds",
 		"data/tables/biomart.csv"
 	output:
-		"output/DEGS/res-all-stage1_ctrl.tsv",
-		"output/Volcanos/vol-mir-stage1_ctrl.png",
-		"output/Volcanos/vol-rna-stage1_ctrl.png",
-		"output/venns/venn-mir-LFC_10-all.png"
+		"data/tables/DEGS/res-all-stage1_ctrl.tsv",
+		"data/plots/Volcanos/vol-mir-stage1_ctrl.png",
+		"data/plots/Volcanos/vol-rna-stage1_ctrl.png",
+		"data/plots/venns/venn-mir-LFC_10-all.png"
 	shell:
 		"Rscript R/04-deg.R"
 
