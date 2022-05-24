@@ -1,6 +1,7 @@
 rule all:
-    input:
-		"data/tables/DEGS/res-all-stage1_ctrl.tsv"
+	input:
+		"data/tables/DEGS/res-all-stage1_ctrl.tsv",
+		"data/tables/exp/ctrl-all.tsv"
 
 rule biomart:      
     output:

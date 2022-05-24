@@ -5,7 +5,7 @@ options(repos = r)
 # install.packages("crayon")
 require("crayon")
 # System Packages
-packs <- c("BiocManager", "DT", "tidyverse", "devtools", 
+packs <- c("UpSetR", "BiocManager", "DT", "tidyverse", "devtools", 
            "VennDiagram", "ggfortify", "gprofiler2")
 noinst <- setdiff(packs, rownames(installed.packages()))
 cat(red(noinst) %+% '\n')
