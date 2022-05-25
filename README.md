@@ -1,6 +1,6 @@
 # Introduction
 
-This repository contains code and supplementary materials for paper: *miRNA and gene expression and co-expression networks are strongly altered through stages in clear cell renal carcinoma*. 
+This repository contains code and supplementary materials for paper: *Oncogenic role of miR-217 during clear cell renal carcinoma progression*. 
 
 Jose Maria Zamora-Fuentes, Jesus Espinal-Enriquez, Enrique Hernandez-Lemus
 
@@ -9,21 +9,18 @@ Jose Maria Zamora-Fuentes, Jesus Espinal-Enriquez, Enrique Hernandez-Lemus
 
 Considerations:
 
-- R (3.6.3)
-- Python 3
+- R (4.2.0)
+- Snakemake
 
-Pre-requisites to run scripts in theses paheses are obtained with:
+Pre-requisites to run  R scripts are obtained with:
 
-`$ Rscript R/pkgs-requiremnts.R`
+`$ Rscript install-pkgs.R`
 
-Python Pre-requisites (optional):
-
-`$ bash install-miniconda.sh`
 
 
 ## Directory structure
 
-- */pipeline* : Files to fetch data of GDC. Make preQC, postQC and normalization
+- */data* : Files to fetch data of GDC. Make preQC, postQC and normalization
 <!-- - */Results/DEG* : Output of Differential Expression of genes (DEG)
 - */Results/Expression* : Clean Expression Matrix (Genes x Samples)
 - */Results/MI* : 10000 biggest Mutual Information pairs of genes
@@ -31,51 +28,18 @@ Python Pre-requisites (optional):
  -->
 
 
-# RNA-SEQ
+## Compututional Protocol
 
-## 01 - Data Aquisition, Quality Control  and Normalization
+All steps in protocol were drawn in Snakemake tool
 
-These three phases of the process are performed by next R script:
+You can execute:
 
-`$ Rscript R/01-rnaseq.R`
+`$ snakemake -c all`
 
-The RNA expression data for control and each stage are saved on:
-
-`$ ls Output/`
+You can check details in `Snakefile`
 
 
-#  miRNA
-
-## 02 - Data Aquisition, Quality Control  and Normalization
-
-These three phases of the process are performed by next R script:
-
-`$ Rscript R/02-miRNAs.R`
-
-The miRNA expression data for control and each stage are saved on:
-
-Anotar los nombres de archivos
-
-`$ ls Output/`
-
-
-#  Processing
-
-## 03 - Annotation
-
-These three phases of the process are performed by next Python script:
-
-`$ python Py/03-clean-biomart.py`
-
-The annotation and clean expression are saved on:
-
-`$ ls Output/`
-
-Anotar los nombres de archivos
-
-
-
-## 04 - Mutual Information
+## Mutual Information
 
 You can use repository of parallel mulitcore [ARACNe](https://github.com/CSB-IG/ARACNE-multicore)
 
@@ -85,58 +49,20 @@ From ARACNe2 output writing out MI network cuts of 10k interactions into `Result
 
 Create complete matrix and cut gene-miRNA interactions.
 
+## Differential Expression (DEG)
 
+All operations with differenttial expressed genes can be reviewed in 
 
-## 05 - Networks Analysis 
-
-### miRNA regulators
-
-`$ python Py/net-specs.py`
-
-Convention to input name miRNA-gen networks in directory `Output/MI` is:
-
-`expr-all-ctrl-1e4-genmirna.tsv, expr-all-stagei-1e4-genmirna.tsv, expr-all-stageii-1e4-genmirna.tsv, expr-all-stageiii-1e4-genmirna.tsv, expr-all-stageiv-1e4-genmirna.tsv`
-
-
-
-## 06 - Differential Expression (DEG)
-
-### miRNAs
-
-To extract only miRNAs expression of files, you can use in Output directory:
-
-`$ for i in expr-all-*.tsv; do t=$(echo $i | cut -d\- -f 3 | cut -d\. -f 1); head -1  ${i} > expr-miRNA-${t}.tsv; tail -n 494 ${i} >> expr-miRNA-${t}.tsv  ; done`
-
-Script to write out DEG in a *tsv* file:
-
-`$ Rscript R/DEG.R`
-
-Output for each stage is saved on:
-
-`$ ls Results/DEG/`
-
-This output contains volcano plot in html format.
-
-
-## 07 - Pearson analysis
-
-To get heatmap plots for Pearson correlations:
-
-`$ python Py/pearson.py`
-
-The ouput is saved on `Output/Pearson/peaval-ctrl.tsv`, i.e.
-
-To get Pearson value networks:
-
-`$ python Py/peavals.py`
-
-The ouput is saved on `Output/peaval-ctrl.tsv`, i.e.
-
+`$ cat R/04-deg.R`
 
 
 
 
 <!-- 
+
+## 05 - Networks Analysis 
+
+### miRNA regulators
 
 
 ## 04 - Networks Analysis by MI cut off interaction
