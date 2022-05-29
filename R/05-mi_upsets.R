@@ -37,10 +37,24 @@ upset(fromList(MIs),
 
 
 ###### DRAFT
+library(stringr)
+bm <- read.table(file = "data/tables/biomart.csv", sep = ",", header = TRUE)
+elements <- unique(unlist(MIs))
+m <- fromList(MIs)
 
 v <- as.vector(as.integer(rownames(m[(m$stage1 == 1) & (m$stage2 == 1)& (m$stage3 == 1) & (m$stage4 == 1) & (m$ctrl == 0),])))
-split(elements[v]," ")
-genes <- elements[v]
+df <- data.frame(dat = elements[v])
+df[c('gene', 'miR')] <- str_split_fixed(df$dat, ' ', 2)
+df1 <- merge(df,bm,by.x ="gene", by.y = "ensembl_gene_id")
+df1$gene_name
+write.table(df1, file = "data/tables/genes-only-stages.tsv", 
+            row.names=FALSE, sep="\t")
+
+
+v <- as.vector(as.integer(rownames(m[(m$stage1 == 1) & (m$stage2 == 1)& (m$stage3 == 1) & (m$stage4 == 1) & (m$ctrl == 1),])))
+df <- data.frame(dat = elements[v])
+df[c('gene', 'miR')] <- str_split_fixed(df$dat, ' ', 2)
+df1 <- merge(df,bm,by.x ="gene", by.y = "ensembl_gene_id")
 
 # fromList()
   # elements <- unique(unlist(MIs))
