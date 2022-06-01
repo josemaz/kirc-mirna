@@ -129,6 +129,7 @@ dmypy.json
 .pyre/
 
 #ch3m
+.DS_Store
 data/RDS/
 data/plots/
 data/tables/
