@@ -2,8 +2,11 @@ r = getOption("repos")
 r["CRAN"] = "http://cran.us.r-project.org"
 options(repos = r)
 
-# install.packages("crayon")
+cat("Using LiBRARY: ",.libPaths(),"\n")
+
+install.packages("crayon")
 require("crayon")
+
 # System Packages
 packs <- c("UpSetR", "BiocManager", "DT", "tidyverse", "devtools", 
            "VennDiagram", "ggfortify", "gprofiler2")
